@@ -1,0 +1,22 @@
+{
+  "name": "my-sleep-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest",
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "build": "tsup src"
+  },
+  "keywords": [],
+  "author": "Vitor Veras",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.14.4",
+    "tsup": "^8.1.0",
+    "tsx": "^4.15.6",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  }
+}
