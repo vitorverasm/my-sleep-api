@@ -1,3 +1,4 @@
+import env from "./config/env";
 import { startHTTPServer } from "./http/server";
 
-startHTTPServer(3000);
+startHTTPServer(env.SERVER_PORT);

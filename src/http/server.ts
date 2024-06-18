@@ -7,7 +7,7 @@ export function startHTTPServer(port: number) {
         return { message: "Hello, world!" }
     })
 
-    server.listen({ port }).then(() => {
+    server.listen({ port, host: "0.0.0.0" }).then(() => {
         console.log(`HTTP server running on port ${port}...`)
     })
 }
