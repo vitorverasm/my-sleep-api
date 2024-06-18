@@ -8,10 +8,10 @@
     "dev": "tsx watch src/index.ts",
     "start": "tsx src/index.ts",
     "build": "tsup src",
-    "clear:db": "tsx prisma/clear-db.ts"
+    "clear:db": "tsx src/database/scripts/clear-db.ts"
   },
   "prisma": {
-    "seed": "tsx prisma/seed.ts"
+    "seed": "tsx src/database/scripts/seed.ts"
   },
   "repository": {
     "type": "git",
