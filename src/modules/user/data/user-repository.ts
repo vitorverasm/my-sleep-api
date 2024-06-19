@@ -16,6 +16,7 @@ export default class UserRepository implements Repository<User> {
                 id: true,
                 name: true,
                 email: true,
+                sleepSessions: false
             }
         });
         return z.array(UserSchema).parse(users)
