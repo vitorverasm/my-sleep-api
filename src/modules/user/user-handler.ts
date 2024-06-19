@@ -9,6 +9,9 @@ export default class UserHandler {
     }
 
     async getAllUsers() {
+        if (!this.userRepository.getAll) {
+            throw new Error("Method UserRepository/getAll not implemented");
+        }
         return this.userRepository.getAll();
     }
 }
