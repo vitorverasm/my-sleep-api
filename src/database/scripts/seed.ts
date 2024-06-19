@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { generateUser } from '../../modules/user/mocks/generate-user'
+import { generateUser } from '../../modules/user/tests/mocks/generate-user'
 
 
 const prisma = new PrismaClient()
