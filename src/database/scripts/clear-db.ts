@@ -3,8 +3,8 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-    await prisma.user.deleteMany()
-    console.log('All users deleted!')
+    await prisma.$executeRaw`TRUNCATE TABLE "SleepStage", "TimeSeries", "SleepSession" ,"User" RESTART IDENTITY`
+    console.log('All data deleted!')
 }
 
 main()
