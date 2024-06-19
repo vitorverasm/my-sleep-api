@@ -9,9 +9,6 @@ export const SleepSessionSchema = z.object({
   id: z.coerce.string({
     required_error: "id is required",
   }),
-  userId: z.coerce.string({
-    required_error: "userId is required",
-  }),
   /**
    * Time the session starts in ISO 8601 format
    */

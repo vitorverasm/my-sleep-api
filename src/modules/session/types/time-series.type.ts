@@ -33,7 +33,6 @@ export const TimeSeriesSchema = z.object({
    * Ignore this
    */
   heating: z.tuple([z.string().datetime(), z.number()]).array().optional(),
-  sleepSessionId: z.number().int(),
 });
 
 export type TimeSeries = z.infer<typeof TimeSeriesSchema>;

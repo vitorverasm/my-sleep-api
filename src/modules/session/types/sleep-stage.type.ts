@@ -9,7 +9,6 @@ export const SleepStageSchema = z.object({
    * Duration of the stage in seconds
    */
   duration: z.number().int().min(0),
-  sleepSessionId: z.number().int(),
 });
 
 export type SleepStage = z.infer<typeof SleepStageSchema>;
