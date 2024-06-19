@@ -11,7 +11,13 @@ export default class UserRepository implements Repository<User> {
     }
 
     async getAll(): Promise<User[]> {
-        const users = await this.client.findMany();
+        const users = await this.client.findMany({
+            select: {
+                id: true,
+                name: true,
+                email: true,
+            }
+        });
         return z.array(UserSchema).parse(users)
     }
 }
