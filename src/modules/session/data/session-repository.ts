@@ -21,7 +21,8 @@ export default class SessionRepository implements Repository<SleepSession> {
                 ts: true,
                 stages: true,
                 score: true,
-                timeseries: true
+                timeseries: true,
+                userId: false
             }
         });
         return z.array(SleepSessionSchema).parse(sleepSessions)
