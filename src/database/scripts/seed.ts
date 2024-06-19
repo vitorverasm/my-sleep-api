@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { generateSleepSession, generateStages, generateTimeSeries } from '../../modules/session/tests/mocks/generate-sleep-session'
+import { generateSleepSessions, generateStages, generateTimeSeries } from '../../modules/session/tests/mocks/generate-sleep-session'
 import { generateUser } from '../../modules/user/tests/mocks/generate-user'
 
 const parameters = {
@@ -22,9 +22,12 @@ async function main() {
     })
 
     users.map(async (user) => {
-        const mockSessions = Array.from({ length: parameters.sessionsPerUser }).map(() => generateSleepSession(user.id))
+        const mockSessions = generateSleepSessions(user.id, parameters.sessionsPerUser)
         const sessions = await prisma.sleepSession.createManyAndReturn({
             data: mockSessions,
+            include: {
+                user: true
+            },
             skipDuplicates: true
         })
 
@@ -36,20 +39,17 @@ async function main() {
                 amountOfHealthItems: parameters.amountOfHealthItems
             })
 
-            await prisma.sleepStage.createMany({
+            await prisma.sleepStage.createManyAndReturn({
                 data: stages,
-                skipDuplicates: true
+                skipDuplicates: true,
+                include: {
+                    sleepSession: true
+                }
             })
 
             await prisma.timeSeries.create({
-                data: {
-                    sleepSessionId: session.id,
-                    tnt: timeSeries.tnt,
-                    tempRoomC: timeSeries.tempRoomC,
-                    tempBedC: timeSeries.tempBedC,
-                    respiratoryRate: timeSeries.respiratoryRate,
-                    heartRate: timeSeries.heartRate,
-                }, include: {
+                data: timeSeries,
+                include: {
                     sleepSession: true
                 }
             })
